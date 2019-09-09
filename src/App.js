@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 
-import Homepage from "./Homepage";
+import Homepage from "./components/pages/homepages/Homepage";
 
 function App() {
   return (
@@ -12,3 +12,4 @@ function App() {
 }
 
 export default App;
+//4.10
