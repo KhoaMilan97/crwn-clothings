@@ -5,11 +5,11 @@ import { createStructuredSelector } from "reselect";
 
 import "./App.css";
 
-import Homepage from "./components/pages/homepages/Homepage";
-import ShopPages from "./components/pages/shop/shop";
+import Homepage from "./pages/homepages/Homepage";
+import ShopPages from "./pages/shop/shop";
 import Header from "./components/header/header";
-import SignInAndSignUp from "./components/pages/sign-in-and-sign-up/sign-in-and-sign-up";
-import Checkouts from "./components/pages/checkout/checkout";
+import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up";
+import Checkouts from "./pages/checkout/checkout";
 
 import { auth, createUserProfileDocumnet } from "./firebase/firebase.utils";
 
@@ -75,4 +75,4 @@ export default connect(
   mapDispatchToProps
 )(App);
 
-//14.1
+//16.1
