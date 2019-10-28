@@ -33,6 +33,10 @@ class App extends React.Component {
         });
       } else {
         setCurrentUser(userAuth);
+        // addCollectionAndDocumnet(
+        //   "collection",
+        //   collectionsArray.map(({ title, items }) => ({ title, items }))
+        // );
       }
     });
   }
@@ -64,6 +68,7 @@ class App extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
+  // collectionsArray: selectShopColletionOverview
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -75,4 +80,4 @@ export default connect(
   mapDispatchToProps
 )(App);
 
-//16.1
+//17.4
