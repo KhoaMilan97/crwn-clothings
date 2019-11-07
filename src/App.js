@@ -11,34 +11,29 @@ import Header from "./components/header/header";
 import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up";
 import Checkouts from "./pages/checkout/checkout";
 
-import { auth, createUserProfileDocumnet } from "./firebase/firebase.utils";
-
-import { setCurrentUser } from "./redux/user/user.action";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 
 class App extends React.Component {
   unscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props;
-    this.unscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocumnet(userAuth);
-
-        userRef.onSnapshot(snapshot => {
-          setCurrentUser({
-            id: snapshot.id,
-            ...snapshot.data()
-          });
-        });
-      } else {
-        setCurrentUser(userAuth);
-        // addCollectionAndDocumnet(
-        //   "collection",
-        //   collectionsArray.map(({ title, items }) => ({ title, items }))
-        // );
-      }
-    });
+    // this.unscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    //   if (userAuth) {
+    //     const userRef = await createUserProfileDocumnet(userAuth);
+    //     userRef.onSnapshot(snapshot => {
+    //       setCurrentUser({
+    //         id: snapshot.id,
+    //         ...snapshot.data()
+    //       });
+    //     });
+    //   } else {
+    //     setCurrentUser(userAuth);
+    //     // addCollectionAndDocumnet(
+    //     //   "collection",
+    //     //   collectionsArray.map(({ title, items }) => ({ title, items }))
+    //     // );
+    //   }
+    // });
   }
 
   componentWillUnmount() {
@@ -71,13 +66,6 @@ const mapStateToProps = createStructuredSelector({
   // collectionsArray: selectShopColletionOverview
 });
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
-});
+export default connect(mapStateToProps)(App);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
-
-//17.4
+//20.11
