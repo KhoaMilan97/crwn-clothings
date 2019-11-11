@@ -70,6 +70,15 @@ export const addCollectionAndDocumnet = async (collectionKey, objectToAdd) => {
   return await batch.commit();
 };
 
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
+};
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();

@@ -12,28 +12,14 @@ import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up";
 import Checkouts from "./pages/checkout/checkout";
 
 import { selectCurrentUser } from "./redux/user/user.selectors";
+import { checkUserSession } from "./redux/user/user.action";
 
 class App extends React.Component {
   unscribeFromAuth = null;
 
   componentDidMount() {
-    // this.unscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-    //   if (userAuth) {
-    //     const userRef = await createUserProfileDocumnet(userAuth);
-    //     userRef.onSnapshot(snapshot => {
-    //       setCurrentUser({
-    //         id: snapshot.id,
-    //         ...snapshot.data()
-    //       });
-    //     });
-    //   } else {
-    //     setCurrentUser(userAuth);
-    //     // addCollectionAndDocumnet(
-    //     //   "collection",
-    //     //   collectionsArray.map(({ title, items }) => ({ title, items }))
-    //     // );
-    //   }
-    // });
+    const { checkUserSession } = this.props;
+    checkUserSession();
   }
 
   componentWillUnmount() {
@@ -63,9 +49,15 @@ class App extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
-  // collectionsArray: selectShopColletionOverview
 });
 
-export default connect(mapStateToProps)(App);
+const mapDisptachToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession())
+});
 
-//20.11
+export default connect(
+  mapStateToProps,
+  mapDisptachToProps
+)(App);
+
+//20.13
