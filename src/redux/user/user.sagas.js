@@ -111,6 +111,7 @@ export function* userSaga() {
     call(onEmailSignInStart),
     call(onCheckUserSession),
     call(onSignOutStart),
-    call(onSignUpStart)
+    call(onSignUpStart),
+    call(onSignInAfterSignUp)
   ]);
 }
