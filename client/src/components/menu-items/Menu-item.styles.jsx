@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MenuItemContainer = styled.div`
   min-width: 30%;
-  height: ${({ size }) => (size ? "380px" : "240px")}
+  height: ${({ size }) => (size ? "380px" : "240px")};
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -24,13 +24,16 @@ export const MenuItemContainer = styled.div`
     }
   }
 
-
   &:first-child {
     margin-right: 7.5px;
   }
 
   &:last-child {
     margin-left: 7.5px;
+  }
+
+  @media screen and (max-width: 800px) {
+    height: 200px;
   }
 `;
 
@@ -53,6 +56,10 @@ export const ContentContainer = styled.div`
   background-color: white;
   opacity: 0.7;
   position: absolute;
+
+  @media screen and (max-width: 800px) {
+    padding: 0 15px;
+  }
 `;
 
 export const TitleContainer = styled.span`
@@ -60,9 +67,17 @@ export const TitleContainer = styled.span`
   margin-bottom: 6px;
   font-size: 22px;
   color: #4a4a4a;
+
+  @media screen and (max-width: 800px) {
+    font-size: 16px;
+  }
 `;
 
 export const SubTittleContainer = styled.span`
   font-weight: lighter;
   font-size: 16px;
+
+  @media screen and (max-width: 800px) {
+    font-size: 14px;
+  }
 `;
