@@ -57,6 +57,19 @@ export const convertCollectionsSnapshotToMap = collections => {
   }, {});
 };
 
+export const getUserCartRef = async userId => {
+  const cartRef = firestore.collection("carts").where("userId", "==", userId);
+  const snapShot = await cartRef.get();
+
+  if (snapShot.empty) {
+    const cartDocRef = firestore.collection("carts").doc();
+    await cartDocRef.set({ userId, cartItems: [] });
+    return cartDocRef;
+  } else {
+    return snapShot.doc[0].ref();
+  }
+};
+
 export const addCollectionAndDocumnet = async (collectionKey, objectToAdd) => {
   const collectionRef = firestore.collection(collectionKey);
 

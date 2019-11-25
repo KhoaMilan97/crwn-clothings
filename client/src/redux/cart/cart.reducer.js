@@ -18,6 +18,11 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         ...state,
         cartItems: addItemToCart(state.cartItems, action.payload)
       };
+    case cartType.SET_CART_FROM_FIREBSE:
+      return {
+        ...state,
+        cartItems: action.payload
+      };
     case cartType.REMOVE_ITEM:
       return {
         ...state,

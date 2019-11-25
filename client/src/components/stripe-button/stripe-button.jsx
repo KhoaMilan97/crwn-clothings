@@ -1,7 +1,6 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
 
-import logo from "../../assets/4.1 favicon.ico.ico";
 import axios from "axios";
 
 const StripeCheckoutButton = ({ price }) => {
@@ -30,7 +29,7 @@ const StripeCheckoutButton = ({ price }) => {
 
   return (
     <StripeCheckout
-      image={logo}
+      image="https://sendeyo.com/up/d/f3eb2117da"
       stripeKey={publishableKey}
       label="Pay With Card"
       name="CRW clothing"
